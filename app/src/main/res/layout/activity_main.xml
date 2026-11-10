@@ -1,19 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="#2E7FB4"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingStart="28dp"
+    android:paddingTop="56dp"
+    android:paddingEnd="28dp"
+    android:paddingBottom="32dp"
+    tools:context=".IntroActivity">
 
+    <!-- Photo -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:cardBackgroundColor="#1F6A9A"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="0dp"
+        app:strokeColor="#C6FF3D"
+        app:strokeWidth="2dp">
+
+        <ImageView
+            android:id="@+id/ivIntroPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Fitness intro photo"
+            android:scaleType="centerCrop"
+            android:src="@drawable/fitsample" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Headline -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TEST PUSH"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="Your journey starts today"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Motivational message -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:text="Every rep, every step, every healthy choice adds up. Show up for yourself today, and your future self will thank you."
+        android:textColor="#E0E8F0"
+        android:textSize="15sp" />
+
+    <!-- Start button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnStart"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="32dp"
+        android:text="Get Started"
+        android:textAllCaps="false"
+        android:textColor="#0F1115"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:backgroundTint="#C6FF3D"
+        app:cornerRadius="14dp" />
+
+</LinearLayout>

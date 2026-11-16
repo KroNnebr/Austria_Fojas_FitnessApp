@@ -30,10 +30,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
+            android:layout_marginBottom="32dp"
             android:text="Keep track of your daily nutrition intake"
             android:textColor="#E0E8F0"
-            android:textSize="14sp"
-            android:layout_marginBottom="32dp"/>
+            android:textSize="14sp" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
@@ -53,8 +53,9 @@
                 android:id="@+id/etFoodName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textText"
+                android:inputType="text"
                 android:textColor="#FFFFFF" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -77,22 +78,24 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:textColor="#FFFFFF" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:text="Meal Category"
             android:textColor="#E0E8F0"
-            android:textSize="14sp"
-            android:layout_marginBottom="8dp"/>
+            android:textSize="14sp" />
 
         <Spinner
             android:id="@+id/spinnerMealType"
             android:layout_width="match_parent"
             android:layout_height="56dp"
+            android:layout_marginBottom="32dp"
             android:background="#1F6A9A"
-            android:layout_marginBottom="32dp"/>
+            android:spinnerMode="dropdown" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSaveMeal"
@@ -106,5 +109,25 @@
             app:backgroundTint="#C6FF3D"
             app:cornerRadius="14dp" />
 
+        <!-- Past recorded meals -->
+        <TextView
+            android:id="@+id/txtPastRecordedMeals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="8dp"
+            android:text="Past Recorded Meals"
+            android:textColor="#E0E8F0"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/pastMealDD"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="#1F6A9A"
+            android:spinnerMode="dropdown" />
+
     </LinearLayout>
+
 </ScrollView>

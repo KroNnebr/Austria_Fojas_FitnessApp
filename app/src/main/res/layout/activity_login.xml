@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.app/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -52,12 +52,12 @@
             android:textSize="14sp" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilEmail"
+            android:id="@+id/tilUsername"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:hint="Email"
+            android:hint="Username"
             android:textColorHint="#E0E8F0"
             app:boxCornerRadiusBottomEnd="14dp"
             app:boxCornerRadiusBottomStart="14dp"
@@ -67,11 +67,12 @@
             app:hintTextColor="#C6FF3D">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etEmail"
+                android:id="@+id/getUserLog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
+                android:inputType="text"
                 android:textColor="#FFFFFF" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -92,11 +93,12 @@
             app:hintTextColor="#C6FF3D">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPassword"
+                android:id="@+id/getPasswordLog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:textColor="#FFFFFF" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -126,16 +128,23 @@
                 android:textColor="#E0E8F0"
                 android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/tvSignUp"
+            <Button
+                android:id="@+id/switchLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
+                android:background="@android:color/transparent"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
                 android:text="Sign Up"
-                android:textColor="#C6FF3D"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textAllCaps="false"
+                android:textColor="#21F375"
+                android:textSize="14sp" />
+
         </LinearLayout>
 
     </LinearLayout>
+
 </ScrollView>

@@ -9,7 +9,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.austria_fojas_fitnessapp"
+        applicationId = "com.example.austria_fojas_fitness"
         minSdk = 24
         targetSdk = 37
         versionCode = 1

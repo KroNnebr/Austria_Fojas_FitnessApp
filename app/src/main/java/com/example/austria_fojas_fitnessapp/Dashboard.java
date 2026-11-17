@@ -66,13 +66,19 @@ public class Dashboard extends AppCompatActivity {
         int remainingCalories = calorieLimit - totalCalories;
         remainingBudget.setText(remainingCalories + " kcal");
 
+        // LIMIT WARNING CHECK & COLOR INDICATOR
+        if (totalCalories > calorieLimit && calorieLimit > 0) {
+            remainingBudget.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
+        } else {
+            remainingBudget.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
+        }
+
         // Calculate progress percentage
         int progress = 0;
         if (calorieLimit > 0) {
             progress = (int) ((totalCalories * 100.0) / calorieLimit);
         }
 
-        // Keep progress between 0 and 100
         progress = Math.max(0, Math.min(progress, 100));
         radialProgress.setMax(100);
         radialProgress.setProgress(progress);

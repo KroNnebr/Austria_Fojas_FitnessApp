@@ -1,30 +1,52 @@
 package com.example.austria_fojas_fitnessapp;
 
-/*
-NOTES:
-- Calorie limit is part of the profile table
- */
-
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class CalorieLimit extends AppCompatActivity {
+
+    EditText inputCalorieLimit;
+    Button btnSaveCalorieLimit;
+    DatabaseHelper dbHelper;
+    int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_calorie_limit);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
+        dbHelper = new DatabaseHelper(this);
+        userId = getIntent().getIntExtra("USER_ID", -1);
+
+        inputCalorieLimit = findViewById(R.id.inputCalorieLimit);
+        btnSaveCalorieLimit = findViewById(R.id.btnSaveCalorieLimit);
+
+        // Pre-fill current limit if it exists in DB
+        int currentLimit = dbHelper.getCalorieLimit(userId);
+        if (currentLimit > 0) {
+            inputCalorieLimit.setText(String.valueOf(currentLimit));
+        }
+
+        btnSaveCalorieLimit.setOnClickListener(v -> {
+            String limitStr = inputCalorieLimit.getText().toString().trim();
+            if (limitStr.isEmpty()) {
+                Toast.makeText(this, "Please enter a calorie limit", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            int newLimit = Integer.parseInt(limitStr);
+            boolean success = dbHelper.updateCalorieLimit(userId, newLimit);
+
+            if (success) {
+                Toast.makeText(this, "Calorie limit updated!", Toast.LENGTH_SHORT).show();
+                finish(); // Returns to Dashboard
+            } else {
+                Toast.makeText(this, "Failed to update limit", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

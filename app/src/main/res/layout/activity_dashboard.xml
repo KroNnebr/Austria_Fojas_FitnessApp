@@ -116,20 +116,15 @@
                     android:layout_height="205dp"
                     android:layout_gravity="center">
 
-                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                    <ProgressBar
                         android:id="@+id/radialProgress"
+                        style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="190dp"
                         android:layout_height="190dp"
                         android:layout_gravity="top|center_horizontal"
                         android:max="100"
                         android:progress="70"
-                        app:indicatorColor="#4B7FF2"
-                        app:indicatorInset="0dp"
-                        app:indicatorSize="190dp"
-                        app:indeterminate="false"
-                        app:trackColor="#A686EA"
-                        app:trackCornerRadius="0dp"
-                        app:trackThickness="36dp" />
+                        android:indeterminate="false" />
 
                     <View
                         android:layout_width="190dp"

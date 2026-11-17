@@ -1,4 +1,3 @@
-
 package com.example.austria_fojas_fitnessapp;
 
 import android.content.ContentValues;
@@ -62,9 +61,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     "FOREIGN KEY (" + COLUMN_PROFILE_USER_ID + ") REFERENCES " +
                     TABLE_USERS + "(" + COLUMN_USER_ID + ") ON DELETE CASCADE)";
 
-    private static final String SQL_DELETE_ENTRIES =
-            "DROP TABLE IF EXISTS " + TABLE_MEALS;
-
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -120,7 +116,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return userId;
     }
 
-    // Save profile and calorie limit
+    // Save profile details
     public boolean saveProfile(int userId, double weight, double height, double bmi) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -138,6 +134,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         );
 
         return result != -1;
+    }
+
+    // Update or set the user's calorie limit
+    public boolean updateCalorieLimit(int userId, int calorieLimit) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_CALORIE_LIMIT, calorieLimit);
+
+        int rowsAffected = db.update(
+                TABLE_PROFILES,
+                values,
+                COLUMN_PROFILE_USER_ID + " = ?",
+                new String[]{String.valueOf(userId)}
+        );
+
+        if (rowsAffected == 0) {
+            values.put(COLUMN_PROFILE_USER_ID, userId);
+            long result = db.insert(TABLE_PROFILES, null, values);
+            return result != -1;
+        }
+
+        return true;
     }
 
     // Get the user's calorie limit
@@ -237,5 +255,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 new String[]{String.valueOf(userId)}
         );
     }
-
 }
